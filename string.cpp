@@ -7,9 +7,9 @@ using namespace std;
 int main () {
     char name[30], password[10];
     cout<<"enter your name :";
-    cin>>name;
+    cin.get(name, 30);
     cout<<"enter you password:";
-    cin>>password;
+    cin.get(password, 10);
     //  cout<<name<<endl<<password;
     if(strlen(password) > 11) {
         cout<<"Your password is too long "<<endl;

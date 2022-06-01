@@ -84,11 +84,12 @@ void deleteNode ( node* &head , node* &tail, int key) {
             curr= curr->link;
             count ++;
         }
-    //     cout<<"previous" <<prev->data<<endl;
-    //     cout<<"current" <<ptr->data<<endl;
+        // cout<<"previous" <<prev->data<<endl;
+        // cout<<"current" <<curr->data<<endl;
     // if( curr == NULL) {
     //     tail = prev->link;
     // }
+    tail = prev;
     prev->link = curr->link;
     curr->link = NULL;
     delete curr;
@@ -116,7 +117,7 @@ int main()
     deleteNode(head ,tail,key);
     display(head);
     // for testing 
-    // cout<<"Head :"<<head->data<<endl;
-    // cout<<"TDail :"<<tail->data<<endl;
+    cout<<"Head :"<<head->data<<endl;
+    cout<<"TDail :"<<tail->data<<endl;
     return 0;
 }

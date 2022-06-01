@@ -33,7 +33,7 @@ void quickSort(int arr[], int l, int r)
 int main()
 {
 
-    int arr[] = {32,45,67,12,89};
+    int arr[] = {5,4,3,2,1};
     quickSort(arr, 0, 4);
     for (int i = 0; i < 5; i++)
     {

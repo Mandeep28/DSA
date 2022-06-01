@@ -27,7 +27,7 @@ string infixToPostfix(string s)
     string res = "";
     for (int i = 0; i < s.length(); i++)
     {
-        // cout<<"s[i] ="<<s[i]<<endl;
+        cout<<"s[i] ="<<s[i]<<endl;
         if (s[i] >= 'a' && s[i] <= 'z' || s[i] >= 'A' && s[i] <= 'Z')
         {
             res += s[i];

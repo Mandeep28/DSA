@@ -1,62 +1,79 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-// merge two sorted array
-void merge(int arr[], int l, int mid, int r) {
-	int n1 = mid -l+1;
-	int n2 = r -mid;
-	int a[n1];
-	int b[n2];
 
-	// enter elements
+void merge(int arr[], int l, int mid, int r) {
+	int n1, n2;
+	n1 = mid-l+1;
+	n2 = r-mid;
+	int a[n1], b[n2];
+	// insert elements in both arrays
 	for(int i=0; i<n1; i++) {
 		a[i] = arr[l+i];
 	}
-	for(int i=0; i<n2;i++) {
-			a[i] = arr[mid+1+i];
-		}
-		// sort the array
-	int i=0, j=0, k=l;
-	while(i<n1 &&j<n2) {
-		if(a[i] < b[j]) {
+	for(int i=0; i<n2; i++) {
+		b[i] = arr[mid+1+i];
+	}
+	// merge both arrays
+	int i,j,k;
+	i=j=0;
+	k=l;
+	while(i<n1 && j<n2) {
+		if(a[i] <b[j]) {
 			arr[k] = a[i];
-			k++; i++;
+			i++;
 		}
 		else {
-			arr[k]= a[j];
-			k++; j++;
+			arr[k] = b[j];
+			j++;
 		}
-		while(i<n1) {
-			arr[k] = a[i];
-			k++; i++;
-		}
-		while(j<n2){
-			arr[k] = a[j];
-			k++; j++;
-		}
+		k++;
 	}
-	
+	// if elements are left in the left arrary
+	while(i<n1) {
+		arr[k] = a[i];
+			i++;
+			k++;
+	}
+	while(j<n2) {
+		arr[k] = b[j];
+			j++;
+			k++;
+	}
 }
+
 void mergeSort(int arr[], int l, int r) {
-	if( l < r) {
-		int mid = (l+r)/2;
+	int mid;
+	if(l<r) {
+		mid = (l+r)/2;
 		mergeSort(arr, l, mid);
 		mergeSort(arr, mid+1, r);
 
-		// merge 2 sorted array 
 		merge(arr, l, mid, r);
 	}
 }
-
-int main(){
-	int arr[5];
-	cout<<"enter elememts in array:"<<endl;
-	for( int i=0; i<4; i++) {
+void display(int arr[], int size) {
+	for(int i=0; i<size; i++) {
+		cout<<arr[i]<<" ";
+	}
+	cout<<endl;
+}
+int main() {
+	int n;
+	cout<<"enter total number of elements:";
+	cin>>n;
+	int arr[n];
+	cout<<"enter elements:";
+	for (int i = 0; i < n; i++)
+	{
 		cin>>arr[i];
 	}
-	mergeSort(arr, 0 , 4);
-	for(int i=0; i<=4; i++) {
-		cout<<arr[i] <<" ";
-	}cout<<endl;
+	cout<<"Elements before sorting :"<<endl;
+	display(arr, n);
+	mergeSort(arr, 0, n-1);
+	cout<<"Elements after sorting :"<<endl;
+	display(arr, n);
+	
+	
 	return 0;
 }
